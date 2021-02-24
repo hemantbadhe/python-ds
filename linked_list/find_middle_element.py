@@ -36,6 +36,22 @@ class LinkedList:
 
             print(f"The middle element is: {slow_ptr.data}")
 
+    def find_middle_element_using_odd_count(self):
+        """
+        find the middle of linked list using odd number logic, if the count is odd then move forward
+        """
+        count = 0
+        current_head = self.head
+        temp_head = self.head
+
+        while temp_head is not None:
+            if count & 1:
+                current_head = current_head.next
+            count += 1
+            temp_head = temp_head.next
+
+        print(f"The middle element is: {current_head.data}")
+
     def print_list(self):
         current_node = self.head
         while current_node is not None:
@@ -56,3 +72,4 @@ if __name__ == "__main__":
     ll.print_list()
 
     ll.find_middle_element()
+    ll.find_middle_element_using_odd_count()

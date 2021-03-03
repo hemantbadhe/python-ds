@@ -1,7 +1,5 @@
 """
-    Find the middle element of linked list, 
-    if the linked list is even in size, then print the second element
-    Ex. linked list is 1->2->3->4->5->6 , then the output should be 4
+    Find nth element in the list from last
 """
 
 
@@ -24,7 +22,6 @@ class LinkedList:
         else:
             new_node.next = self.head
             self.head = new_node
-
         self.length += 1
 
     def print_list(self):
@@ -35,23 +32,21 @@ class LinkedList:
             current_node = current_node.next
         print(f"\n")
 
-    def get_middle_element(self):
-        if not self.head:
-            print(f"Empty linked list")
+    def get_nth_element_from_last(self, position):
+        if self.length < position:
+            print(f"Invalid position.")
+            return
 
-        current_head = self.head
-        faster_head = self.head
-
-        while faster_head and faster_head.next:
-            current_head = current_head.next
-            faster_head = faster_head.next.next
-        print(f"middle element in the list: {current_head.data}")
+        current_node = self.head
+        for index in range(1, self.length - position):
+            current_node = current_node.next
+        print(f"{position}th element from last: {current_node.data}")
 
 
 if __name__ == "__main__":
     ll = LinkedList()
 
-    # Adding nodes to linked list
+    # Adding node in list
     ll.push(5)
     ll.push(4)
     ll.push(3)
@@ -62,5 +57,5 @@ if __name__ == "__main__":
     # printing the linked list
     ll.print_list()
 
-    # printing the middle element in the linked list
-    ll.get_middle_element()
+    # printing the nth element from last
+    ll.get_nth_element_from_last(4)

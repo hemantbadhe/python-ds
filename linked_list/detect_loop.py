@@ -1,5 +1,5 @@
 """
-	To detect loop in a linked list
+	To detect cycle in a linked list(added extra key in node)
 """
 
 
@@ -48,16 +48,23 @@ if __name__ == '__main__':
     head = None
     # Adding node in linked list
     ll = LinkedList()
-    ll.push(20)
-    ll.push(4)
-    ll.push(15)
-    ll.push(10)
+    ll.push('9')
+    ll.push('8')
+    ll.push('7')
+    ll.push('6')
+    ll.push('5')
+    ll.push('4')
+    ll.push('3')
+    ll.push('2')
+    ll.push('1')
 
     # printing the list
     ll.print_list()
 
     # adding loop
     current_node = ll.head
-    current_node.next.next.next = current_node.next
+    # current_node.next.next.next = current_node.next
+    ll.head.next.next.next.next.next.next.next.next.next = ll.head.next.next.next
+
     print(f"Loop detection: ")
     ll.detect_loop()

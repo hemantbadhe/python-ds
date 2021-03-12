@@ -52,6 +52,9 @@ if __name__ == "__main__":
     ll = LinkedList()
 
     # Adding nodes to linked list
+    ll.push(8)
+    ll.push(7)
+    ll.push(6)
     ll.push(5)
     ll.push(4)
     ll.push(3)

@@ -35,26 +35,34 @@ class LinkedList:
             current_node = current_node.next
         print(f"\n")
 
-    def detect_cycle(self):
+    def detect_cycle_and_get_loop_count(self):
         current_node = self.head  # slow pointer
         temp_node = self.head  # fast pointer
+        loop_count = 0
 
         while temp_node and temp_node.next:
             current_node = current_node.next
             temp_node = temp_node.next.next
 
+            """
+                Here once the cycle has been detected, then the loop_count variable assign to 1 and 
+                temp_node moved by 1 pointer and check the until they meet again.
+            """
             if current_node == temp_node:
                 print(f"cycle detected")
                 temp_node = temp_node.next
+                loop_count = 1
                 break
+        else:
+            print(f"cycle not detected")
 
-        self.count = 0
-        temp_node = temp_node.next
         while current_node != temp_node:
+            if not temp_node.next:
+                return
             temp_node = temp_node.next
-            self.count += 1
+            loop_count += 1
 
-        print(f"loop length: {self.count}")
+        print(f"loop length: {loop_count}")
 
 
 if __name__ == "__main__":
@@ -78,4 +86,4 @@ if __name__ == "__main__":
 
     """
     ll.head.next.next.next.next.next.next.next.next.next = ll.head.next.next.next
-    ll.detect_cycle()
+    ll.detect_cycle_and_get_loop_count()
